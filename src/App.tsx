@@ -26,17 +26,21 @@ function App() {
     "joke": "Chuck Norris does not own a stove, oven, or microwave, because revenge is a dish best served cold.",
   }])
 
+  const filteredJoke = jokes.filter(joke => joke.id === 3)
+console.log(filteredJoke)
   return (
     <div className="App">
 
       <h1>React props and state</h1>
-      <ChuckNorrisCard />
+      <ChuckNorrisCard chuckGreeting={chuckGreeting}/>
 
       <h2>Chuck Info: </h2>
-      <ChuckInfo />
+      <ChuckInfo whalesSaved={whalesSaved} roundHouseKicks={roundHouseKicks} />
 
-      <h2>Jokes: </h2>
+      {jokes.map((joke) => <h2>Jokes: {joke.joke} </h2>)}
 
+      <h2>Filtered joke:  </h2>
+      {filteredJoke.map((joke) =><h2>{joke.joke}</h2>)}
     </div>
   );
 }
